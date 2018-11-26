@@ -102,7 +102,7 @@ public class Validation {
         while (true) {
             System.out.println("Enter Position of Employee: ");
             position = s.nextLine();
-            Pattern p = Pattern.compile("^[a-zA-Z][ a-z0-9]{1,20}$");
+            Pattern p = Pattern.compile("^[a-zA-Z][ a-zA-Z0-9]{1,20}$");
             Matcher m = p.matcher(position);
             if (m.matches()) {
                 System.out.println("Successful validation");
@@ -111,9 +111,8 @@ public class Validation {
             }
             else {
                 System.out.println("Failed Validation");
-                System.out.println("1. First letter must be letter.");
-                System.out.println("2. No more then 20 characters allowed");
-                System.out.println("3. Minimum 2 characters allowed");
+                System.out.println("1. No more then 20 characters allowed");
+                System.out.println("2. Minimum 2 characters allowed");
             }
         }
         return position;
@@ -124,7 +123,7 @@ public class Validation {
         while (true) {
             System.out.println("Enter Department of Employee: ");
             department = s.nextLine();
-            Pattern p = Pattern.compile("^[a-zA-Z][a-z]{1,20}$");
+            Pattern p = Pattern.compile("^[a-zA-Z][ A-Za-z]{1,20}$");
             Matcher m = p.matcher(department);
             if (m.matches()) {
                 System.out.println("Successful validation");
@@ -133,10 +132,9 @@ public class Validation {
             }
             else {
                 System.out.println("Failed Validation");
-                System.out.println("1. Only first letter could be capitalized.");
-                System.out.println("2. No digits and symbols allowed");
-                System.out.println("3. No more then 20 characters allowed");
-                System.out.println("4. Minimum 2 characters allowed");
+                System.out.println("1. No digits and symbols allowed");
+                System.out.println("2. No more then 20 characters allowed");
+                System.out.println("3. Minimum 2 characters allowed");
             }
         }
         return department;
@@ -157,7 +155,7 @@ public class Validation {
             }
             else {
                 System.out.println("Failed Validation");
-                System.out.println("1. Only digit allow here");
+                System.out.println("1. Only digits allowed here");
                 System.out.println("2. Minimum 1 digit requires");
                 System.out.println("3. Maximum 8 digits");
             }
@@ -179,7 +177,7 @@ public class Validation {
             else {
                 System.out.println("Failed Validation");
                 System.out.println("1. Phone number must starts from +380...");
-                System.out.println("2. Only digits and ()+- symbols allowed");
+                System.out.println("2. Only digits and ()- symbols allowed");
                 System.out.println("3. Minimum 13 characters requires");
                 System.out.println("4. Maximum 20 characters allowed");
             }
@@ -223,8 +221,8 @@ public class Validation {
             }
             else {
                 System.out.println("Failed Validation");
-                System.out.println("1. Use only whole numbers or decimals");
-                System.out.println("1. Use . sign for decimals");
+                System.out.println("1. Use only whole numbers or floating point numbers");
+                System.out.println("1. Use . sign for floating numbers");
                 System.out.println("2. Only digits allowed");
             }
         }
@@ -266,6 +264,8 @@ public class Validation {
                 System.out.println("Successful validation");
                 if(!addinfo.isEmpty())
                     addinfo = addinfo.substring(0,1).toUpperCase() + addinfo.substring(1);
+                else
+                    addinfo = " ";
                 break;
             }
             else {

@@ -63,17 +63,32 @@ class Menu {
     private static void viewEmp(ArrayList<Employee> list) {
         Scanner s = new Scanner(System.in);
         System.out.println("Employee List");
-        for (int i = 0; i < list.size(); i++) {
-            System.out.print((i + 1) + ". ");
-            list.get(i).printIDFLname();
+        while (true) {
+            if (list.isEmpty()) {
+                System.out.println("List is Empty...");
+                System.out.println("Fill the list from the File or add manually");
+                break;
+            } else {
+                System.out.println("");
+                for (int i = 0; i < list.size(); i++) {
+                    System.out.print((i + 1) + ". ");
+                    list.get(i).printIDFLname();
+                }
+                System.out.println("Press 0 for Exit from this menu");
+                System.out.println("Pick a number of employee you want to view:");
+                int num;
+                num = s.nextInt();
+                if (num <= list.size() && num > 0) {
+                    System.out.println(list.get(num - 1).toString());
+                }
+                else if (num == 0){
+                    System.out.println("exiting from this menu");
+                    break;
+                }
+                else
+                    System.out.println("There is no employee at this number.");
+            }
         }
-        System.out.println("Pick a number of employee you want to view:");
-        int num;
-        num = s.nextInt();
-        if (num <= list.size() && num > 0) {
-            System.out.println(list.get(num - 1).toString());
-        } else
-            System.out.println("There is no employee at this number.");
     }
     private static void editEmp(ArrayList<Employee> list) {
         Scanner s = new Scanner(System.in);
@@ -87,6 +102,7 @@ class Menu {
         num = s.nextInt();
         if (num <= list.size() && num > 0) {
             int edit = 0;
+            num--;
             while (edit != 13) {
                 System.out.println("\nPick one option from 1 to 13 you want to edit: ");
                 System.out.println("1.  lastName");
@@ -179,7 +195,7 @@ class Menu {
                 } else if (edit == 13) {
                     System.out.println("Exit editing...");
                 } else
-                    System.out.println("Error, pick one option from 1 to 14: ");
+                    System.out.println("Error, pick one option from 1 to 13: ");
             }
         } else
             System.out.println("There is no employee at this number.");
@@ -391,6 +407,9 @@ class Menu {
                     break;
                 case "2":
                     writeFile(list);
+                    break;
+                case "3":
+                    System.out.println("exiting read/write menu...");
                     break;
                 default:
                     System.out.println("Error. pick option from 1 to 3");
